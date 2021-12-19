@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Approve-Demo</title>
+    <style>
+        *{
+            margin: 0;
+            padding: 0;
+            /* overflow: hidden; */
+        }
+        .index{
+            display: flex;
+            align-items: center;
+            justify-content: space-around;
+            height: 100vh;
+        }
+    </style>
+</head>
+<body>
+    <div class="index">
+        <div>cabbage测试</div>
+        <span class="myspan">Approve</span>
+    </div>
+</body>
+<script>
+    var fieldAuth = true
+    window.onload = function () {
+        var initFlowComp = function (params) {
+            const flowCompIns = window.flowComp({})
+            flowCompIns.showFlowBox({
+                onClose(callbackData) {
+                    console.log(callbackData, 89)
+                }
+            })
+        }
+        document.querySelectorAll('span.myspan').forEach(v => {
+            console.log(v)
+            v.addEventListener('click', e => {
+                initFlowComp()
+            })
+        })
+    }
+</script>
+</html>
