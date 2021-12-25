@@ -3,8 +3,20 @@
  */
 
 import axios from 'axios'
- 
-export const get = (url, params) => axios.get(url, {
-    params
-})
+/**
+ * @description: axios的get请求处理
+ * @param {url, params}
+ * @return {null}
+ * @author: cabbage
+ */
+export const get = (url, params) =>
+  axios.get(url, {
+    params,
+  })
+/**
+ * @description: axios的post请求处理
+ * @param {url, params}
+ * @return {null}
+ * @author: cabbage
+ */
 export const post = (url, params) => axios.post(url, params)
