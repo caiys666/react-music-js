@@ -29,6 +29,16 @@ module.exports = {
           'less-loader',
         ],
       },
+      {
+        test: /\.(png|jpe?g|gif)(\?\S*)?$/,
+        loader: 'url-loader',
+      },
+      {
+        test: /\.(svg|eot|woff|ttf)(\?.*)$/,
+        use: {
+          loader: 'url-loader',
+        },
+      },
     ],
   },
   resolve: {

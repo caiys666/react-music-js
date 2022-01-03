@@ -1,7 +1,5 @@
 import React, { Component } from 'react'
-import { Button } from 'antd-mobile'
-import axios from 'axios'
-import image from './api/image'
+import PageBanner from './components/pageBanner/PageBanner'
 import './App.less'
 
 const basePath = '/cloud/'
@@ -21,24 +19,13 @@ export default class App extends Component {
     }
   }
 
-  componentDidMount() {
-    this.handleLogin()
-    image.getBannerList({ type: 2 })
-  }
-
-  handleLogin = async () => {
-    let res = await axios.get(`${basePath}login/cellphone`, { params })
-    console.log('----res----', res)
-    // let resData = await get(`${basePath}login/cellphone`, params)
-    // console.log('----res----', resData)
-  }
+  componentDidMount() {}
 
   handleResult = res => {}
   render() {
     return (
       <div className='approve'>
-        Approve-Demo
-        <Button>你好</Button>
+        <PageBanner />
       </div>
     )
   }
