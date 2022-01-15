@@ -1,6 +1,7 @@
 const path = require('path')
 const HtmlWebpackPlugin = require('html-webpack-plugin')
 const { CleanWebpackPlugin } = require('clean-webpack-plugin')
+const MiniCssExtractPlugin = require('mini-css-extract-plugin')
 
 module.exports = {
   // 入口文件
@@ -13,8 +14,17 @@ module.exports = {
     // 配置相应的规则
     rules: [
       {
-        test: /\.css$/,
-        use: ['style-loader', 'css-loader', 'postcss-loader'],
+        test: /\.(css|less)$/,
+        use: [
+          MiniCssExtractPlugin.loader,
+          // 'style-loader',
+          'css-loader',
+          'less-loader',
+          // 'postcss-loader',
+          // {loader:'style-loader'},
+          // {loader:'css-loader'},
+          // {loader:'less-loader'},
+        ],
       },
       {
         test: /\.js[x]?$/,
@@ -22,22 +32,12 @@ module.exports = {
         exclude: /node_modules/,
       },
       {
-        test: /\.less$/,
-        use: [
-          'style-loader',
-          { loader: 'css-loader', options: { importLoaders: 1 } },
-          'less-loader',
-        ],
-      },
-      {
         test: /\.(png|jpe?g|gif)(\?\S*)?$/,
         loader: 'url-loader',
       },
       {
-        test: /\.(svg|eot|woff|ttf)(\?.*)$/,
-        use: {
-          loader: 'url-loader',
-        },
+        test: /\.(woff|ttf|svg|eot)$/, //fonts目录下四个文件后缀名
+        use: ['url-loader'],
       },
     ],
   },
@@ -50,5 +50,6 @@ module.exports = {
       template: './src/index.html',
     }),
     new CleanWebpackPlugin(),
+    new MiniCssExtractPlugin(),
   ],
 }

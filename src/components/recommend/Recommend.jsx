@@ -31,7 +31,7 @@ export default class Recommend extends Component {
       <div className='recommend'>
         <div className='recommend-top'>
           <span>推荐歌单</span>
-          <span>更多</span>
+          <span className='recommend-top-more'>更多</span>
         </div>
         <div className='recommend-list'>
           {recommendList.map((item, index) => {
