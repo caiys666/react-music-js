@@ -1,9 +1,10 @@
 import React, { Component } from 'react'
-import { Swiper, Image } from 'antd-mobile'
-import user from '../../api/user'
-import Banner from '../banner/Banner'
-import Recommend from '../recommend/Recommend'
-import Boutique from '../boutique/Boutique'
+import { Image } from 'antd-mobile'
+import Home from './home/Home'
+import Search from './search/Search'
+import Mine from './mine/Mine'
+import Attention from './attention/Attention'
+
 import './PageBanner.less'
 
 export default class PageBanner extends Component {
@@ -12,6 +13,13 @@ export default class PageBanner extends Component {
     this.state = {
       pageImg: require('../../assets/images/ice.jpg').default,
       isShowPageImg: true,
+      categoryList: [
+        { name: '主页', component: 'Home', icon: 'icon-zhuyedianji', selected: true },
+        { name: '搜索', component: 'Search', icon: 'icon-search', selected: false },
+        { name: '我的', component: 'Mine', icon: 'icon-music', selected: false },
+        { name: '关注', component: 'Attention', icon: 'icon-wodeguanzhu', selected: false },
+      ],
+      currentComponent: 'Home',
     }
   }
   componentDidMount = async () => {}
@@ -23,8 +31,22 @@ export default class PageBanner extends Component {
     })
   }
 
+  // 切换导航
+  handleChangeComponent = (item, index) => {
+    const { categoryList } = this.state
+    categoryList.map((category, cIndex) => {
+      if (index === cIndex) {
+        category.selected = true
+      } else {
+        category.selected = false
+      }
+    })
+    this.setState({ categoryList: [...categoryList], currentComponent: item.component })
+  }
+
   render() {
-    const { pageImg, isShowPageImg } = this.state
+    const { pageImg, isShowPageImg, categoryList, currentComponent } = this.state
+    const { handleChangeComponent } = this
     return (
       <div className='page'>
         {isShowPageImg ? (
@@ -36,9 +58,29 @@ export default class PageBanner extends Component {
           </div>
         ) : null}
         <div className='page-content'>
-          <Banner />
-          <Recommend />
-          <Boutique />
+          {currentComponent === 'Home' ? (
+            <Home />
+          ) : currentComponent === 'Search' ? (
+            <Search />
+          ) : currentComponent === 'Mine' ? (
+            <Mine />
+          ) : currentComponent === 'Attention' ? (
+            <Attention />
+          ) : null}
+        </div>
+        <div className='page-category'>
+          {categoryList.map((item, index) => {
+            return (
+              <div
+                className={`category ${item.selected ? 'selected' : ''}`}
+                key={index}
+                onClick={handleChangeComponent.bind(this, item, index)}
+              >
+                <span className={`iconfont ${item.icon}`}></span>
+                <span className='category-name'>{item.name}</span>
+              </div>
+            )
+          })}
         </div>
       </div>
     )

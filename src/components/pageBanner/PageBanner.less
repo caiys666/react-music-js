@@ -10,4 +10,32 @@
       border-radius: 0.625rem;
     }
   }
+  &-category {
+    position: fixed;
+    bottom: 0;
+    left: 0;
+    display: flex;
+    width: 100%;
+    .category {
+      width: 25%;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      flex-direction: column;
+      padding-bottom: 0.125rem;
+      .iconfont {
+        font-size: 1.5rem;
+        padding-bottom: 0.125rem;
+      }
+      &-name {
+        font-size: 0.75rem;
+      }
+    }
+    .selected {
+      color: #08ca71;
+      .iconfont::before {
+        color: #08ca71;
+      }
+    }
+  }
 }

@@ -9,6 +9,10 @@ export default class RecommendItem extends Component {
       <div className='recommend-item'>
         <div className='recommend-item-img'>
           <img src={data.picUrl} alt='' />
+          <div className='playcount'>
+            <i className='iconfont icon-playfill'></i>
+            <span>{data?.playCount}</span>
+          </div>
         </div>
         <div className='recommend-item-desc'>{data.name}</div>
       </div>

@@ -1,9 +1,23 @@
 .recommend-item {
   &-img {
+    position: relative;
     img {
       width: 6.25rem;
       height: 6.25rem;
       border-radius: 0.625rem;
+    }
+    .playcount {
+      position: absolute;
+      top: 0.5rem;
+      right: 0.5rem;
+      border-radius: 1rem;
+      background-color: rgba(234, 235, 236, 0.28);
+      padding: 0.0625rem 0.125rem;
+      .icon-playfill {
+      }
+      .icon-playfill::before {
+        color: rgb(209, 209, 209);
+      }
     }
   }
   &-desc,

@@ -36,7 +36,8 @@ module.exports = {
         loader: 'url-loader',
       },
       {
-        test: /\.(woff|ttf|svg|eot)$/, //fonts目录下四个文件后缀名
+        // test: /\.(woff|ttf|svg|eot)$/, //fonts目录下四个文件后缀名
+        test: /\.(svg|eot|woff|woff[0-9]|ttf)$/,
         use: ['url-loader'],
       },
     ],

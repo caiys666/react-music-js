@@ -30,8 +30,11 @@ export default class Recommend extends Component {
     return (
       <div className='recommend'>
         <div className='recommend-top'>
-          <span>推荐歌单</span>
-          <span className='recommend-top-more'>更多</span>
+          <span className='title'>推荐歌单</span>
+          <span className='recommend-top-more'>
+            更多
+            <span className='iconfont icon-right'></span>
+          </span>
         </div>
         <div className='recommend-list'>
           {recommendList.map((item, index) => {
