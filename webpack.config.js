@@ -32,6 +32,14 @@ module.exports = {
         exclude: /node_modules/,
       },
       {
+        test: /\.js$/,
+        exclude: /node_modules/,
+        include: /colyseus/,
+        use: {
+          loader: "babel-loader"
+        } 
+      },
+      {
         test: /\.(png|jpe?g|gif)(\?\S*)?$/,
         loader: 'url-loader',
       },

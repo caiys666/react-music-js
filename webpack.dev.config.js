@@ -1,5 +1,6 @@
 const merge = require('webpack-merge')
 const baseConfig = require('./webpack.config.js')
+const path = require('path');
 
 module.exports = merge(baseConfig, {
   // 设置为开发模式
@@ -7,13 +8,16 @@ module.exports = merge(baseConfig, {
   devtool: 'inline-source-map',
   // 配置服务端目录和端口
   devServer: {
-    contentBase: './dist',
+    static: {
+      directory: path.join(__dirname, 'public'),
+      watch: true
+    },
     // host: 'test.yyuap.com',
     host: 'localhost',
     port: 8081,
-    progress: true,
+    // progress: true,
     proxy: {
-      //设置代理，必须填
+      // 设置代理，必须填
       // "/api": {
       //     //设置拦截器  拦截器格式   斜杠+拦截器名字，名字可以自己定
       //     target: "http://localhost:3300", //代理的目标地址，这是豆瓣接口地址网址
